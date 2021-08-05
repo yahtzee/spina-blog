@@ -1,12 +1,12 @@
 <%= render Spina::UserInterface::HeaderComponent.new do |header| %>
   <% header.actions do %>
-    
-    <% if @author.persisted? %>    
+
+    <% if @author.persisted? %>
       <%= render Spina::UserInterface::DropdownComponent.new do |dropdown| %>
         <% dropdown.button(classes: "btn btn-default px-3") do %>
           <%= heroicon('dots-horizontal', style: :solid, class: "w-5 h-5 text-gray-600") %>
         <% end %>
-        
+
         <% dropdown.menu do %>
           <%= button_to t('spina.permanently_delete'), spina.admin_blog_author_path(@author.id), method: :delete, class: "block w-full text-left px-4 py-2 text-sm leading-5 font-medium text-red-500 cursor-pointer bg-white hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", form: {data: {controller: "confirm", confirm_message: t('spina.blog.categories.delete_confirmation', subject: @author.display_name)}} %>
         <% end %>
@@ -21,32 +21,56 @@
 <% end %>
 
 <div class="p-8">
-  
+
   <%= form_with model: @author, url: @author.new_record? ? spina.admin_blog_authors_path : spina.admin_blog_author_path(@author.id), id: dom_id(@author) do |f| %>
-    <%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Author.human_attribute_name(:display_name)) do %>
-      <%= render Spina::Forms::LabelComponent.new(f, :display_name) %>
-      <%= render Spina::Forms::TextFieldComponent.new(f, :display_name, autofocus: @author.display_name.blank?) %>
-    <% end %>
+    <div class="mt-6">
+      <%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Author.human_attribute_name(:display_name)) do %>
+        <%= render Spina::Forms::LabelComponent.new(f, :display_name) %>
+        <%= render Spina::Forms::TextFieldComponent.new(f, :display_name, autofocus: @author.display_name.blank?) %>
+      <% end %>
+    </div>
 
-    <%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Author.human_attribute_name(:first_name)) do %>
-      <%= render Spina::Forms::LabelComponent.new(f, :first_name) %>
-      <%= render Spina::Forms::TextFieldComponent.new(f, :first_name) %>
-    <% end %>
+    <div class="mt-6">
+      <%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Author.human_attribute_name(:first_name)) do %>
+        <%= render Spina::Forms::LabelComponent.new(f, :first_name) %>
+        <%= render Spina::Forms::TextFieldComponent.new(f, :first_name) %>
+      <% end %>
+    </div>
 
-    <%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Author.human_attribute_name(:last_name)) do %>
-      <%= render Spina::Forms::LabelComponent.new(f, :last_name) %>
-      <%= render Spina::Forms::TextFieldComponent.new(f, :last_name) %>
-    <% end %>
+    <div class="mt-6">
+      <%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Author.human_attribute_name(:last_name)) do %>
+        <%= render Spina::Forms::LabelComponent.new(f, :last_name) %>
+        <%= render Spina::Forms::TextFieldComponent.new(f, :last_name) %>
+      <% end %>
+    </div>
 
-    <%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Author.human_attribute_name(:email)) do %>
-      <%= render Spina::Forms::LabelComponent.new(f, :email) %>
-      <%= render Spina::Forms::TextFieldComponent.new(f, :email) %>
-    <% end %>
+    <div class="mt-6">
+      <%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Author.human_attribute_name(:email)) do %>
+        <%= render Spina::Forms::LabelComponent.new(f, :email) %>
+        <%= render Spina::Forms::TextFieldComponent.new(f, :email) %>
+      <% end %>
+    </div>
 
-    <%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Author.human_attribute_name(:user)) do %>
-      <%= render Spina::Forms::LabelComponent.new(f, :user) %>
-      <%= f.select :user_id, Spina::Blog.user_model.constantize.all.collect{|u| [u.to_s, u.id]}, {prompt: true, include_blank: true}, class: 'form-select', data: {controller: "select-placeholder", action: "select-placeholder#update"} %>  
-    <% end %>
+    <div class="mt-6">
+      <%= render Spina::Forms::LabelComponent.new(f, :biography) %>
+      <div class="mt-1 relative">
+
+        <%= f.hidden_field :biography, id: 'biography_input' %>
+
+        <div class="relative form-textarea p-4 shadow-sm max-w-5xl" data-controller="trix" id="insert_content_trix-toolbar" data-action="media-picker:done->trix#insertAttachment">
+          <%= render Spina::Forms::TrixToolbarComponent.new('biography_trix-toolbar') %>
+
+          <trix-editor class="prose prose-sm focus:outline-none max-w-3xl xl:border-r border-dashed border-gray-200 pr-3" toolbar="biography_trix-toolbar" input="biography_input" data-trix-target="editor" data-action="trix-file-accept->trix#preventDefault"></trix-editor>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Author.human_attribute_name(:user)) do %>
+        <%= render Spina::Forms::LabelComponent.new(f, :user) %>
+        <%= f.select :user_id, Spina::Blog.user_model.constantize.all.collect{|u| [u.to_s, u.id]}, {prompt: true, include_blank: true}, class: 'form-select', data: {controller: "select-placeholder", action: "select-placeholder#update"} %>
+      <% end %>
+    </div>
   <% end %>
 
 </div>

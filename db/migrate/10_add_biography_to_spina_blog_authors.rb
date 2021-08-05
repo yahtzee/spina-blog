@@ -2,6 +2,6 @@
 
 class AddBiographyToSpinaBlogAuthors < ActiveRecord::Migration[5.0]
   def change
-    remove_column :spina_blog_posts, :user_id
+    add_column :spina_blog_authors, :biography, :text, after: :email
   end
 end
