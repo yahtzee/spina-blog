@@ -9,9 +9,9 @@ atom_feed language: 'en-GB', url: spina.blog_root_url do |feed|
       entry.title(post.title)
       entry.content(post.content, type: 'html')
 
-      if post.user
+      if post.author
         entry.author do |author|
-          author.name(post.user.name)
+          author.name(post.author.display_name)
         end
       end
     end

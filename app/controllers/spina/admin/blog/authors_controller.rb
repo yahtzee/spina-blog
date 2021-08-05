@@ -8,7 +8,7 @@ module Spina
         before_action :author, except: %i[new create index]
         before_action :set_breadcrumb
         before_action :set_locale
-        
+
         admin_section :blog
 
         decorates_assigned :author
@@ -73,7 +73,7 @@ module Spina
 
         def author_params
           params.require(:author)
-                .permit(:display_name, :first_name, :last_name, :email, :user_id)
+                .permit(:display_name, :first_name, :last_name, :email, :user_id, :biography)
                 .merge(user_type: Spina::Blog.user_model)
         end
       end
