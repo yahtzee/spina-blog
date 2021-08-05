@@ -16,6 +16,8 @@ module Spina
       validates :display_name, presence: true
 
       delegate :to_s, to: :display_name
+
+      alias_attribute :name, :display_name
     end
   end
 end
