@@ -23,6 +23,14 @@ nl:
         saving: Opslaan...
         saved: Categorie opgeslagen
 
+      authors:
+        title: Authors
+        new: Nieuwe auteur
+        name: Auteurs
+        save: Auteur opslaan
+        saving: Opslaan...
+        saved: Auteur opgeslagen
+
   activerecord:
     attributes:
       spina/blog/post:
@@ -36,7 +44,14 @@ nl:
         slug_description: Permalink URL for this post
         excerpt: Uittreksel
         spina_user: Auteur
+        author: Auteur
         photo: Afbeelding
       spina/blog/category:
         name: Naam categorie
         name_placeholder: Naam categorie
+      spina/blog/author:
+        display_name: Display name
+        first_name: First name
+        last_name: Last name
+        user: User
+        email: Email

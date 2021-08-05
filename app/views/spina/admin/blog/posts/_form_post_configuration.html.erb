@@ -5,21 +5,21 @@
 
 <div class="border-t border-gray-200 my-6"></div>
 
-<%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Category.human_attribute_name(:draft), description: Spina::Blog::Post.human_attribute_name(:draft_description)) do %>
+<%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Post.human_attribute_name(:draft), description: Spina::Blog::Post.human_attribute_name(:draft_description)) do %>
   <%= render Spina::Forms::LabelComponent.new(f, :draft) %>
   <%= render Spina::Forms::SwitchComponent.new(f, :draft) %>
 <% end %>
 
 <div class="border-t border-gray-200 my-6"></div>
 
-<%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Category.human_attribute_name(:featured), description: Spina::Blog::Post.human_attribute_name(:featured_description)) do %>
+<%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Post.human_attribute_name(:featured), description: Spina::Blog::Post.human_attribute_name(:featured_description)) do %>
   <%= render Spina::Forms::LabelComponent.new(f, :featured) %>
   <%= render Spina::Forms::SwitchComponent.new(f, :featured) %>
 <% end %>
 
 <div class="border-t border-gray-200 my-6"></div>
 
-<%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Category.human_attribute_name(:slug), description: Spina::Blog::Category.human_attribute_name(:slug_description)) do %>
+<%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Post.human_attribute_name(:slug), description: Spina::Blog::Post.human_attribute_name(:slug_description)) do %>
   <%= render Spina::Forms::LabelComponent.new(f, :slug) %>
   <%= render Spina::Forms::TextFieldComponent.new(f, :slug) %>
   
@@ -40,7 +40,7 @@
 
 <div class="border-t border-gray-200 my-6"></div>
 
-<%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Category.human_attribute_name(:spina_user)) do %>
-  <%= render Spina::Forms::LabelComponent.new(f, :spina_user) %>
-  <%= f.select :user_id, Spina::User.all.collect{|u| [u.name, u.id]}, {prompt: true}, class: 'form-select', data: {controller: "select-placeholder", action: "select-placeholder#update"} %>  
+<%= render Spina::Forms::GroupComponent.new(label: Spina::Blog::Category.human_attribute_name(:author)) do %>
+  <%= render Spina::Forms::LabelComponent.new(f, :author) %>
+  <%= f.select :author_id, Spina::Blog::Author.all.collect{|u| [u.display_name, u.id]}, {prompt: true}, class: 'form-select', data: {controller: "select-placeholder", action: "select-placeholder#update"} %>  
 <% end %>

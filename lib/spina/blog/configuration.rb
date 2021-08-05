@@ -5,7 +5,7 @@ module Spina
   module Blog
     include ActiveSupport::Configurable
 
-    config_accessor :title, :controller, :description, :spina_icon, :plugin_type
+    config_accessor :title, :controller, :description, :spina_icon, :plugin_type, :user_model
 
     self.title = 'Blog'
     self.controller = 'blog'
@@ -13,5 +13,7 @@ module Spina
     self.spina_icon = 'pencil-outline'
 
     self.plugin_type = 'website_resource'
+
+    self.user_model = 'Spina::User'
   end
 end

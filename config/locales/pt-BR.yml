@@ -23,6 +23,14 @@ pt-BR:
         saving: Salvando...
         saved: Categoria salva
 
+      authors:
+        title: Authors
+        new: New Author
+        name: Authors
+        save: Save author
+        saving: Saving...
+        saved: Author Saved
+
   activerecord:
     attributes:
       spina/blog/post:
@@ -36,6 +44,13 @@ pt-BR:
         slug_description: URL Permalink para esta postagem
         excerpt: Resumo
         spina_user: Autor
+        author: Autor
       spina/blog/category:
         name: Nome da categoria
         name_placeholder: Nome da categoria
+      spina/blog/author:
+        display_name: Display name
+        first_name: First name
+        last_name: Last name
+        user: User
+        email: Email

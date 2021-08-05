@@ -17,6 +17,7 @@ Spina::Engine.routes.draw do
 
   namespace :admin do
     namespace :blog do
+      resources :authors, except: :show
       resources :categories
       resources :posts, except: :show do
         collection do

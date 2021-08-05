@@ -10,7 +10,7 @@ module Spina
 
       belongs_to :image, optional: true, class_name: 'Spina::Image'
 
-      belongs_to :user
+      belongs_to :author
       belongs_to :category, inverse_of: :posts
 
       validates :title, :content, presence: true

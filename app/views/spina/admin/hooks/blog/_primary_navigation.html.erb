@@ -10,5 +10,6 @@
   <% nav.links do %>
     <%= render Spina::MainNavigation::LinkComponent.new(t('spina.blog.posts.title'), admin_blog_posts_path, active: request.path.start_with?("/#{Spina.config.backend_path}/blog/posts")) %>
     <%= render Spina::MainNavigation::LinkComponent.new(t('spina.blog.categories.title'), admin_blog_categories_path, active: request.path.start_with?("/#{Spina.config.backend_path}/blog/categories")) %>
+    <%= render Spina::MainNavigation::LinkComponent.new(t('spina.blog.authors.title'), admin_blog_authors_path, active: request.path.start_with?("/#{Spina.config.backend_path}/blog/authors")) %>
   <% end %>
 <% end %>

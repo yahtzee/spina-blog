@@ -8,7 +8,7 @@ require 'nokogiri'
 module Spina
   # Spina::Blog
   module Blog
-    require 'spina/blog/engine'
     require 'spina/blog/configuration'
+    require 'spina/blog/engine'
   end
 end

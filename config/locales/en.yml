@@ -24,6 +24,14 @@ en:
         saved: Category saved
         delete_confirmation: Are you sure you want to delete <strong>%{subject}</strong>?
 
+      authors:
+        title: Authors
+        new: New Author
+        name: Authors
+        save: Save author
+        saving: Saving...
+        saved: Author Saved
+
   activerecord:
     attributes:
       spina/blog/post:
@@ -37,6 +45,13 @@ en:
         slug_description: Permalink URL for this post
         excerpt: Excerpt
         spina_user: Author
+        author: Author
       spina/blog/category:
         name: Category name
         name_placeholder: Category name
+      spina/blog/author:
+        display_name: Display name
+        first_name: First name
+        last_name: Last name
+        user: User
+        email: Email
