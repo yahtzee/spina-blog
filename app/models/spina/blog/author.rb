@@ -7,6 +7,8 @@ module Spina
   module Blog
     # Spina::Blog::Author
     class Author < ApplicationRecord
+      include Spina::Gravatar
+
       belongs_to :user, optional: true, polymorphic: true
 
       has_many :posts, class_name: 'Spina::Blog::Post', inverse_of: :author
